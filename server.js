@@ -14,18 +14,6 @@ app.use(bodyParser.json());
 //=========================================
 require("./config/connection.js");
 
-
-
-
-
-
-
-
-
-
-
-
-
 app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
 });

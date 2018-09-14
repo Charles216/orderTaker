@@ -1,65 +1,38 @@
+<h1>Cats!</h1>
 
-{{!-- fill in html body format here --}}
-{{!-- add a form to sned that in --}}
-{{!-- change the script to make sense --}}
+<h2>Cats that are not sleepy!</h2>
 
-<script type="text/javascript">
-  $(".delplan").on("click", function(event) {
-    var id = $(this).data("planid");
+<ul>
+  {{#each burgers}}
+    {{#unless burger_served}}
+      {{> burgers/burger-block burger_served=true}}
+    {{/unless}}
+  {{/each}}
+</ul>
 
-    // Send the DELETE request.
-    $.ajax("/todos/" + id, {
-      type: "DELETE"
-    }).then(
-      function() {
-        console.log("deleted id ", id);
-        // Reload the page to get the updated list
-        location.reload();
-      }
-    );
-  });
+<h2>Burgers that have been served!</h2>
 
-  $("#createplan").on("submit", function(event) {
-    // Make sure to preventDefault on a submit event.
-    event.preventDefault();
+<ul>
+  {{#each burgers}}
+    {{#if burger_served}}
+      {{> burgers/burger-block burger_served=false}}
+    {{/if}}
+  {{/each}}
+</ul>
 
-    var newPlan = {
-      plan: $("#createplan [name=plan]").val().trim()
-    };
+<h2>Add a Burger</h2>
+<form class="create-form">
 
-    // Send the POST request.
-    $.ajax("/todos", {
-      type: "POST",
-      data: newPlan
-    }).then(
-      function() {
-        console.log("created new plan");
-        // Reload the page to get the updated list
-        location.reload();
-      }
-    );
-  });
+  <div class="form-group">
+    <label for="burg">Cat Name:</label>
+    <input type="text" id="burg" name="name">
+  </div>
 
-  $("#updateplan").on("submit", function(event) {
-    // Make sure to preventDefault on a submit event.
-    event.preventDefault();
+  <div class="form-group">
+    <label for="served">Burger served yet?</label><br>
+    <input type="radio" name="served" value="1" checked> Served!<br>
+    <input type="radio" name="served" value="0"> Unserved
+  </div>
 
-    var id = $("[name=id]").val().trim();
-
-    var updatedPlan = {
-      plan: $("#updateplan [name=plan]").val().trim()
-    };
-
-    // Send the PUT request.
-    $.ajax("/todos/" + id, {
-      type: "PUT",
-      data: updatedPlan
-    }).then(
-      function() {
-        console.log("updated id ", id);
-        // Reload the page to get the updated list
-        location.reload();
-      }
-    );
-  });
-</script>
+  <button type="submit">Add Burger</button>
+</form>
