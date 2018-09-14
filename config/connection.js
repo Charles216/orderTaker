@@ -15,4 +15,5 @@ connection.connect(function (err) {
     }
     console.log("OMG why was I assigned this random number 😝  " + connection.threadId);
 });
+
 module.exports = connection;
