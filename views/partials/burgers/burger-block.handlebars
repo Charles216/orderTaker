@@ -1,9 +1,10 @@
 <li>
 	{{name}}
 
-	<button class="change-served" data-id="{{id}}" data-getServed="{{burger_served}}">
-		{{#if burger_served}}Burger Ready!{{else}}Burger Served!{{/if}}
+	<button class="change-served" data-id="{{id}}" data-newOrder="{{burger_served}}">
+		{{#if burger_served}}Burger Served!{{else}}Burger Ordered!{{/if}}
 	</button>
 
 	<button class="delete-burger" data-id="{{this.id}}">DELETE!</button>
 </li>
+

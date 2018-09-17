@@ -1,10 +1,8 @@
-<h1>Cats!</h1>
-
-<h2>Cats that are not sleepy!</h2>
-
+<h1>Eat the Burger!</h1>
 <ul>
-  {{#each burgers}}
+  {{#each burgerHistory }}
     {{#unless burger_served}}
+      {{burger_name}}
       {{> burgers/burger-block burger_served=true}}
     {{/unless}}
   {{/each}}
@@ -13,25 +11,26 @@
 <h2>Burgers that have been served!</h2>
 
 <ul>
-  {{#each burgers}}
+  {{#each burgerHistory}}
     {{#if burger_served}}
+      {{burger_name}}
       {{> burgers/burger-block burger_served=false}}
     {{/if}}
   {{/each}}
 </ul>
 
-<h2>Add a Burger</h2>
+<h2>Create a Burger!</h2>
 <form class="create-form">
 
   <div class="form-group">
-    <label for="burg">Cat Name:</label>
-    <input type="text" id="burg" name="name">
+    <label for="burgerName">Burger Name:</label>
+    <input type="text" id="burgerName" name="name">
   </div>
 
   <div class="form-group">
-    <label for="served">Burger served yet?</label><br>
-    <input type="radio" name="served" value="1" checked> Served!<br>
-    <input type="radio" name="served" value="0"> Unserved
+    <label for="served">Served?</label><br>
+    <input type="radio" name="served" value="1" checked>Served!<br>
+    <input type="radio" name="served" value="0"> Cooking
   </div>
 
   <button type="submit">Add Burger</button>
