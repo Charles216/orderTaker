@@ -1,10 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+</head>
+
 <h1>Eat the Burger!</h1>
+
+<h2>Burgers Ready To Picked Up!</h2>
 <ul>
   {{#each burgerHistory }}
-    {{#unless burger_served}}
-      {{burger_name}}
-      {{> burgers/burger-block burger_served=true}}
-    {{/unless}}
+  {{#unless burger_served}}
+  {{burger_name}}
+  {{> burgers/burger-block burger_served=true}}
+  {{/unless}}
   {{/each}}
 </ul>
 
@@ -12,10 +21,10 @@
 
 <ul>
   {{#each burgerHistory}}
-    {{#if burger_served}}
-      {{burger_name}}
-      {{> burgers/burger-block burger_served=false}}
-    {{/if}}
+  {{#if burger_served}}
+  {{burger_name}}
+  {{> burgers/burger-block burger_served=false}}
+  {{/if}}
   {{/each}}
 </ul>
 
@@ -27,11 +36,11 @@
     <input type="text" id="burgerName" name="name">
   </div>
 
-  <div class="form-group">
+  {{!-- <div class="form-group">
     <label for="served">Served?</label><br>
     <input type="radio" name="served" value="1" checked>Served!<br>
     <input type="radio" name="served" value="0"> Cooking
-  </div>
+  </div> --}}
 
   <button type="submit">Add Burger</button>
 </form>
